@@ -11,6 +11,7 @@ public class UserEntity {
     private Long id;
     private String username;
     private String password;
+    private boolean active;
 
     @ElementCollection(targetClass = UserRole.class,fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
@@ -49,4 +50,11 @@ public class UserEntity {
         this.roles = roles;
     }
 
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 }
