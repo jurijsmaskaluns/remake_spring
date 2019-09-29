@@ -1,4 +1,4 @@
-package com.example.remake_spring;
+package com.example.remake_spring.controller;
 
 import com.example.remake_spring.domain.ProductEntity;
 import com.example.remake_spring.repos.ProductRepo;
@@ -14,20 +14,16 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class GreetingController {
+public class MainController {
     @Autowired
     private ProductRepo productRepo;
 
-    @GetMapping("/greeting")
-    public String greeting(
-            @RequestParam(name="name", required=false, defaultValue="World") String name,
-             Map<String, Object> model
-    ) {
-        model.put("name", name);
-        return "greeting";
+    @GetMapping("/")
+    public String greeting(Map<String, Object> model) {
+       return "greeting";
     }
 
-    @GetMapping
+    @GetMapping("/main")
     public String main(Map<String, Object> model){
         Iterable<ProductEntity> products = productRepo.findAll();
         model.put("products", products);
@@ -35,7 +31,7 @@ public class GreetingController {
         return "main";
     }
 
-    @PostMapping
+    @PostMapping("/main")
     public String add(@RequestParam String name,@RequestParam String productType ,Map<String, Object> model){
         ProductEntity pE = new ProductEntity();
         pE.setName(name);
