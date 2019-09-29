@@ -16,7 +16,7 @@
         </form>
     </div>
     <div> Product List</div>
-    <form method="post" action="filter">
+    <form method="post" action="/filter">
         <input type="text" name="filter"/>
         <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
         <button type="submit">find</button>
